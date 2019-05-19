@@ -2,11 +2,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.karanalpe</groupId>
-  	<artifactId>restful</artifactId>
+  	<artifactId>rest-java</artifactId>
   	<packaging>war</packaging>
   	<version>1.0.0-SNAPSHOT</version>
-  	<name>restful Maven Webapp</name>
-  	<url>http://maven.apache.org</url>
+  	<name>rest-java Maven Webapp</name>
+  	<url>http://maven.apache.org</url>  
   
 	
 	<repositories>
@@ -26,7 +26,7 @@
 	</dependencies>
 	
 	<build>
-    	<finalName>restful</finalName>
+    	<finalName>rest-java</finalName>
 	</build>
 	
 </project>

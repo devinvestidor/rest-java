@@ -1,4 +1,4 @@
-package br.com.karanalpe.restful.rest;
+package br.com.karanalpe.restjava.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,85 +14,77 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+@Path("/crud")
+public class ServiceCrud {
 
-@Path("/crude")
-public class ServiceCrude {
-	
-	static List<String> pessoas = new ArrayList<String>();	
-	
-	
+	static List<String> pessoas = new ArrayList<String>();
+
 	@POST
 	@Path("/insert")
 	@Produces(MediaType.TEXT_PLAIN + "; charset=UTF-8")
-	public Response insert(String nome) {		
-		pessoas.add(nome);		
-		return Response.status(200).entity(pessoas).build();		
+	public Response insert(String nome) {
+		pessoas.add(nome);
+		return Response.status(200).entity(pessoas).build();
 	}
-	
+
 	@PUT
 	@Path("/edit")
 	@Produces(MediaType.TEXT_PLAIN + "; charset=UTF-8")
 	public Response edit(String objeto) {
-		
+
 		String array[] = objeto.split(";");
 		String nomeAntigo = array[0];
 		String nomeNovo = array[1];
-		
+
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (pessoas.get(i).equals(nomeAntigo)) {
 				pessoas.set(i, nomeNovo);
-			}			
+			}
 		}
-		
-		return Response.status(200).entity(pessoas).build();		
-	}		
-	
+
+		return Response.status(200).entity(pessoas).build();
+	}
 
 	@DELETE
 	@Path("/delete")
 	@Produces(MediaType.TEXT_PLAIN + "; charset=UTF-8")
-	public Response delete(String nome) {		
+	public Response delete(String nome) {
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (pessoas.get(i).equals(nome)) {
 				pessoas.remove(i);
-			}			
+			}
 		}
-		
-		return Response.status(200).entity(pessoas).build();		
+
+		return Response.status(200).entity(pessoas).build();
 	}
 
-	
 	@GET
 	@Path("/select")
 	@Produces(MediaType.TEXT_PLAIN + "; charset=UTF-8")
-	public Response select() {		
-		return Response.status(200).entity(pessoas).build();		
-	}	
-	
-	
+	public Response select() {
+		return Response.status(200).entity(pessoas).build();
+	}
+
 	@GET
 	@Path("/select_nome_path/{nome}")
-	public Response selectNomePath(@PathParam("nome") String nome) { 
-		for (int i = 0; i < pessoas.size(); i++) {			
+	public Response selectNomePath(@PathParam("nome") String nome) {
+		for (int i = 0; i < pessoas.size(); i++) {
 			if (pessoas.get(i).equals(nome)) {
 				return Response.status(200).entity(pessoas.get(i)).build();
-			}			
-		}		
+			}
+		}
 		return Response.status(200).entity("Pessoa não encontrada").build();
 	}
 
-
 	@GET
 	@Path("/select_nome_query")
-	public Response selectNomeQuery(@QueryParam("nome") String nome) { 
-		for (int i = 0; i < pessoas.size(); i++) {			
+	public Response selectNomeQuery(@QueryParam("nome") String nome) {
+		for (int i = 0; i < pessoas.size(); i++) {
 			if (pessoas.get(i).equals(nome)) {
 				return Response.status(200).entity(pessoas.get(i)).build();
-			}			
-		}		
+			}
+		}
 		return Response.status(200).entity("Pessoa não encontrada").build();
-	}	
-	
-	
+	}
 
 }

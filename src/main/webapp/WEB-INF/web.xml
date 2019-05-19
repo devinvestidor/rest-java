@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Aplicação Rest Exemplo</display-name>	
+	<display-name>Aplicação Rest Java Exemplo</display-name>	
 	
 	<context-param>
 		<param-name>resteasy.scan</param-name>
